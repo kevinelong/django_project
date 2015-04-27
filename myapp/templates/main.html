@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        div {
+        div,
+        a {
             margin: 1em;
             padding: 1em;
             border: 1px solid black;
@@ -23,21 +24,23 @@
 
     var request = new XMLHttpRequest();
     var target = document.getElementById("target");
-    target.innerHTML = ""; //Clear Loading message
 
     function draw(data) {
-        for (var i = 0; i < data.length; i++) {
-            var listElement = document.createElement("div");
-            var category = data[i];
-            listElement.innerHTML = "<h1>" + category.name + "<h1>"
-            for (var p = 0; p < category.pages.length; p++) {
-                var item = category.pages[p];
-                var itemElement = document.createElement("div");
-                itemElement.innerHTML = '<a href="' + item.url + '">' + item.title + '</a>';
+        target.innerHTML = ""; //Clear Loading message
 
-                listElement.appendChild(itemElement)
+        for (var c = 0; c < data.length; c++) {
+            var categoryElement = document.createElement("div");
+            var category = data[c];
+            categoryElement.innerHTML = "<h1>" + category.name + "<h1>"
+            for (var p = 0; p < category.pages.length; p++) {
+                var page = category.pages[p];
+                var pageElement = document.createElement("a");
+                pageElement.innerHTML = page.title;
+                pageElement.setAttribute("href",  page.url );
+
+                categoryElement.appendChild(pageElement)
             }
-            target.appendChild(listElement);
+            target.appendChild(categoryElement);
         }
     }
 
