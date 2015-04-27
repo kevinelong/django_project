@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            margin: 1em;
+            padding: 1em;
+            border: 1px solid black;
+            font-family: sans-serif;
+            display: inline-block;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="target"></div>
+<script>
+    //AJAX - ASYNC JAVASCRIPT AND XML
+    //XMLHTTPRequest is the JavaScript Command
+    //NOT XML - Usually JSON
+
+    var request = new XMLHttpRequest();
+    var target = document.getElementById("target");
+    target.innerHTML = ""; //Clear Loading message
+
+    function draw(data) {
+        for (var i = 0; i < data.length; i++) {
+            var listElement = document.createElement("div");
+            var category = data[i];
+            listElement.innerHTML = "<h1>" + category.name + "<h1>"
+            for (var p = 0; p < category.pages.length; p++) {
+                var item = category.pages[p];
+                var itemElement = document.createElement("div");
+                itemElement.innerHTML = '<a href="' + item.url + '">' + item.title + '</a>';
+
+                listElement.appendChild(itemElement)
+            }
+            target.appendChild(listElement);
+        }
+    }
+
+    function onRequestChange() {
+        console.log(request.readyState, request.status);
+        if ((request.readyState == 4) && (request.status == 200)) {
+            var data = JSON.parse(request.responseText);
+            draw(data);
+        }
+    }
+
+    function fetch() {
+        request.onreadystatechange = onRequestChange;
+        request.open("GET", "/myapp/data_nested/", true);
+        request.send();
+    }
+
+    target.innerHTML = "Loading..."; //Set Loading message
+    //Fake being slow to load
+    setTimeout(fetch, 0);
+</script>
+</body>
+</html>
