@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        div,
+        body{
+            background-color: darkgray;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        h1{
+            color: goldenrod;
+            text-shadow: 1px 1px 10px black;
+        }
         a {
             margin: 1em;
             padding: 1em;
-            border: 1px solid black;
             font-family: sans-serif;
             display: inline-block;
-            width: auto;
+            background-color: black;
+            color: gold;
+            text-decoration: none;
+            width: 15%;
+            min-height: 3em;
+            text-align: center;
+            border-radius: 3em;
+            border: 1px solid black;
+            vertical-align: middle;
+            line-height: 2em;
+        }
+        a:hover{
+            background-color: #333333;
+            color: white;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+<header>Book Marks R Us</header>
 <div id="target"></div>
+<footer> &copy;2099</footer>
 <script>
     //AJAX - ASYNC JAVASCRIPT AND XML
     //XMLHTTPRequest is the JavaScript Command
@@ -36,7 +59,7 @@
                 var page = category.pages[p];
                 var pageElement = document.createElement("a");
                 pageElement.innerHTML = page.title;
-                pageElement.setAttribute("href",  page.url );
+                pageElement.setAttribute("href", page.url);
 
                 categoryElement.appendChild(pageElement)
             }
