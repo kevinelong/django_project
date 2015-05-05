@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^data_nested/$', views.data_nested, name='data_nested'),
     url(r'^data_both/$', views.data_both, name='data_both'),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
+    url(r'^category_by_id/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
 )  # New!
 #
 # if settings.DEBUG:

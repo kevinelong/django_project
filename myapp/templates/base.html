@@ -4,44 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        body {
-            background-color: darkgray;
-            font-family: sans-serif;
-            text-align: center;
-        }
-
-        h1 {
-            color: goldenrod;
-            text-shadow: 1px 1px 10px black;
-        }
-
-        a {
-            margin: 1em;
-            padding: 1em;
-            font-family: sans-serif;
-            font-weight: bolder;
-            letter-spacing: 0.2em;
-            display: inline-block;
-            color: gold;
-            text-decoration: none;
-            width: 15%;
-            min-height: 1em;
-            text-align: center;
-            border-radius: 1em;
-{#            border: 1px solid rgba(0,0,0,0.5); #}
-            vertical-align: middle;
-            line-height: 2em;
-            box-shadow:1em 1em 3em black;
-            background-color: black;
-            background-image: linear-gradient(to bottom, rgb(96, 96, 96), rgb(32, 32, 32));
-
-        }
-
-        a:hover {
-            background-color: #333333;
-            color: white;
-            text-decoration: underline;
-        }
+        {% block style %}
     </style>
 </head>
 <body>

@@ -11,7 +11,19 @@
             <ul>
                 {% for category in categories %}
                 <!-- Following line changed to add an HTML hyperlink -->
-                <li><a href="/myapp/category/{{ category.slug }}">{{ category.name }}</a></li>
+                <li>
+                    <a href="/myapp/category/{{ category.slug }}">AAA{{ category.name }}</a>
+                    {% if category.pages %}
+                        <ul>
+                            {% for page in category.pages.all %}
+                                <li><a href="{{ page.url }}">ZZZ{{ page.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <strong>No pages currently in category.</strong>
+                    {% endif %}
+
+                </li>
                 {% endfor %}
             </ul>
        {% else %}
